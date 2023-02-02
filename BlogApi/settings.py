@@ -143,4 +143,5 @@ CORS_ORIGIN_WHITELIST = (
     "http://localhost:3000",
     "http://localhost:8000",
 )
-# CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+# Sử dụng port 3000 vì React thường sử dụng port này
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
