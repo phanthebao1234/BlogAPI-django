@@ -17,9 +17,9 @@ WWW-Authenticate HTTP header with details on how to authorize
 * Server checks credentials and responds with either 200 OK or 403 Forbidden status code
 ![Diagram](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication/http-auth-sequence-diagram.png)
 
-* Ưu điểm:
+**Ưu điểm:**
 - Đơn giản
-* Nhược điểm:
+**Nhược điểm**:
 - Đầu tiên, trên mỗi yêu cầu, máy chủ phải tra cứu và xác minh tên người dùng và mật khẩu, đó là không hiệu quả. Sẽ tốt hơn nếu tra cứu một lần và sau đó chuyển mã thông báo của một số loại cho biết, người dùng này được phê duyệt.
 - Thứ hai, thông tin đăng nhập của người dùng đang được chuyển ở dạng văn bản rõ ràng, không phải được mã hóa hoàn toàn qua internet. Điều này là vô cùng không an toàn. Bất kỳ lưu lượng truy cập internet nào không được mã hóa đều có thể dễ dàng bị bắt và sử dụng lại. Do đó xác thực cơ bản chỉ nên được sử dụng thông qua HTTPS, phiên bản bảo mật của HTTP.
 
@@ -44,9 +44,9 @@ người phục vụ
 * Nếu người dùng đăng nhập lại sau đó, ID phiên mới sẽ được tạo và lưu trữ dưới dạng cookie trên
 khách hàng
 
-* Ưu điểm của phương pháp này là nó an toàn hơn vì thông tin đăng nhập của người dùng chỉ được gửi một lần chứ không phải trên mọi chu kỳ yêu cầu/phản hồi như trong Xác thực cơ bản. Nó cũng hiệu quả hơn vì máy chủ không phải xác minh thông tin đăng nhập của người dùng mỗi lần, nó chỉ khớp ID phiên với đối tượng phiên được tra cứu nhanh.
-* Tuy nhiên, có một số nhược điểm. Đầu tiên, ID phiên chỉ hợp lệ trong trình duyệt nơi đăng nhập đã được thực hiện; nó sẽ không hoạt động trên nhiều miền. Đây là một vấn đề hiển nhiên khi một API cần hỗ trợ nhiều giao diện người dùng như trang web và ứng dụng dành cho thiết bị di động. Thứ hai, các đối tượng phiên phải được cập nhật, điều này có thể gây khó khăn trong các trang web lớn có nhiều máy chủ. Làm thế nào để bạn duy trì tính chính xác của một đối tượng phiên trên mỗi máy chủ? Và thứ ba, các cookie được gửi đi cho mọi yêu cầu, ngay cả những yêu cầu không yêu cầu xác thực, điều này là không hiệu quả.
-- Do đó, thông thường không nên sử dụng sơ đồ xác thực dựa trên phiên cho bất kỳ API nào
+##### Ưu điểm của phương pháp này là nó an toàn hơn vì thông tin đăng nhập của người dùng chỉ được gửi một lần chứ không phải trên mọi chu kỳ yêu cầu/phản hồi như trong Xác thực cơ bản. Nó cũng hiệu quả hơn vì máy chủ không phải xác minh thông tin đăng nhập của người dùng mỗi lần, nó chỉ khớp ID phiên với đối tượng phiên được tra cứu nhanh.
+##### Tuy nhiên, có một số nhược điểm. Đầu tiên, ID phiên chỉ hợp lệ trong trình duyệt nơi đăng nhập đã được thực hiện; nó sẽ không hoạt động trên nhiều miền. Đây là một vấn đề hiển nhiên khi một API cần hỗ trợ nhiều giao diện người dùng như trang web và ứng dụng dành cho thiết bị di động. Thứ hai, các đối tượng phiên phải được cập nhật, điều này có thể gây khó khăn trong các trang web lớn có nhiều máy chủ. Làm thế nào để bạn duy trì tính chính xác của một đối tượng phiên trên mỗi máy chủ? Và thứ ba, các cookie được gửi đi cho mọi yêu cầu, ngay cả những yêu cầu không yêu cầu xác thực, điều này là không hiệu quả.
+- => Do đó, thông thường không nên sử dụng sơ đồ xác thực dựa trên phiên cho bất kỳ API nào
 sẽ có nhiều giao diện người dùng.
 
 ![Diagram](https://images.viblo.asia/full/e428d454-c208-451a-9586-69c9d68cc308.png)
